@@ -1,6 +1,5 @@
 from flask import Flask,request
-from helper.spliter import spliter 
-from time import time
+from helper.spliter import spliter
 app: Flask=Flask(__name__)
 
 @app.route('/',methods=["GET"])
@@ -14,7 +13,10 @@ def getSementicSplit():
     if request.method!="POST":
         return 
     body=request.get_json()
+    # print(body)
     res=spliter(body.get('data'))
+    # res=metadata_extractor(res)
+    # print(res)
     return {
         "data":res
     }
